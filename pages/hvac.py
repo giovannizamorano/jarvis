@@ -1,4 +1,3 @@
-# Imports
 from openai import OpenAI
 from datetime import datetime
 import pandas as pd
@@ -11,6 +10,7 @@ import time
 # session_state: es una facultad que permite conservar informacion al momento de interactuar
 # con la pagina, dado que cada interaccion ejecuta el script desde el principio
 
+
 ignorar = [""]
 api_key_st = st.secrets["openai_api_key"]
 assistant_id_st = st.secrets["assistant_id_hvac"]
@@ -21,10 +21,10 @@ assistant_id = assistant_id_st
 
 # Titulo de la pagina
 st.set_page_config(
-    page_title="Analisis de tickets con IA Iconstruye (IAcontruye)",
+    page_title="Jarvis HVAC",
     page_icon="🤖"
 )
-
+st.title("Jarvis HVAC")
 # ---------------------------------------------
 # -------------inicio funciones----------------
 # ---------------------------------------------
@@ -53,19 +53,6 @@ def thread_id():
 # ----------------------------------------------------------------
 
 def main():
-    asistente = st.selectbox("Selecciona el asistente", ["JARVIS CES", "JARVIS HVAC"])
-    
-    # Update API key and assistant ID based on the selected assistant
-    if asistente == "JARVIS CES":
-        assistant_id = st.secrets["assistant_id_ces"]
-    elif asistente == "JARVIS HVAC":
-        assistant_id = st.secrets["assistant_id_hvac"]
-
-    client = OpenAI(api_key=api_key_st)
-
-    if st.button("ocultar/mostrar archivos"):
-        st.write ("archivos cargados")
-        files_names()
 
     print("Starting main function")  # Debugging identifier
     # Directly initialize the conversation
